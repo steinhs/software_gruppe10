@@ -1,16 +1,11 @@
 public class Dato {
+
+    //Variabler
     public int dag;
     public int maaned;
     public int aar;
 
-    @Override
-    public String toString() {
-        return "Date{" + dag +
-                "-" + maaned +
-                "-" + aar +
-                '}';
-    }
-
+    //Getters og Setters
     public int getDag() {
         return dag;
     }
@@ -35,9 +30,19 @@ public class Dato {
         this.aar = aar;
     }
 
+    //Konstruktører
     public Dato(int dag, int maaned, int aar) {
         this.dag = dag;
         this.maaned = maaned;
         this.aar = aar;
+    }
+
+    //toString metode
+    @Override
+    public String toString() {
+        return "Date{" + dag +
+                "-" + maaned +
+                "-" + aar +
+                '}';
     }
 }

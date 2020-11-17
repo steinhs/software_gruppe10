@@ -1,24 +1,11 @@
 public class Parkeringsplass {
+
+    //Variabler
     public Adresse adresse;
     public Pris pris;
     public Bruker utleier;
 
-
-    public Parkeringsplass(Adresse adresse, Pris pris, Bruker utleier) {
-        this.adresse = adresse;
-        this.pris = pris;
-        this.utleier = utleier;
-    }
-
-    @Override
-    public String toString() {
-        return "Parkeringsplass{" +
-                "adresse=" + adresse +
-                ", pris=" + pris +
-                ", utleier=" + utleier +
-                '}';
-    }
-
+    //Getters og Setters
     public Adresse getAdresse() {
         return adresse;
     }
@@ -41,5 +28,22 @@ public class Parkeringsplass {
 
     public void setUtleier(Bruker utleier) {
         this.utleier = utleier;
+    }
+
+    //Konstruktører
+    public Parkeringsplass(Adresse adresse, Pris pris, Bruker utleier) {
+        this.adresse = adresse;
+        this.pris = pris;
+        this.utleier = utleier;
+    }
+
+    //toString metode
+    @Override
+    public String toString() {
+        return "Parkeringsplass{" +
+                "adresse=" + adresse +
+                ", pris=" + pris +
+                ", utleier=" + utleier +
+                '}';
     }
 }

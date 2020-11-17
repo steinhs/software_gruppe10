@@ -1,12 +1,10 @@
 public class Leietid {
+
+    //Variabler
     public Tidspunkt fratid;
     public Tidspunkt tiltid;
 
-    public Leietid(Tidspunkt fratid, Tidspunkt tiltid) {
-        this.fratid = fratid;
-        this.tiltid = tiltid;
-    }
-
+    //Getters og Setters
     public Tidspunkt getFratid() {
         return fratid;
     }
@@ -23,6 +21,13 @@ public class Leietid {
         this.tiltid = tiltid;
     }
 
+    //Konstruktører
+    public Leietid(Tidspunkt fratid, Tidspunkt tiltid) {
+        this.fratid = fratid;
+        this.tiltid = tiltid;
+    }
+
+    //toString metode
     @Override
     public String toString() {
         return "Leietid{" +

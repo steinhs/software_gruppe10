@@ -1,16 +1,12 @@
 public class LeieAvParkering {
+
+    //Variabler
     public Bruker leietaker;
     public Parkeringsplass parkeringsplass;
     public Leiedato leiedato;
     public Leietid leietid;
 
-    public LeieAvParkering(Bruker leietaker, Parkeringsplass parkeringsplass, Leiedato leiedato, Leietid leietid) {
-        this.leietaker = leietaker;
-        this.parkeringsplass = parkeringsplass;
-        this.leiedato = leiedato;
-        this.leietid = leietid;
-    }
-
+    //Getters og Setters
     public Bruker getLeietaker() {
         return leietaker;
     }
@@ -43,6 +39,15 @@ public class LeieAvParkering {
         this.leietid = leietid;
     }
 
+    //Konstruktører
+    public LeieAvParkering(Bruker leietaker, Parkeringsplass parkeringsplass, Leiedato leiedato, Leietid leietid) {
+        this.leietaker = leietaker;
+        this.parkeringsplass = parkeringsplass;
+        this.leiedato = leiedato;
+        this.leietid = leietid;
+    }
+
+    //toString metode
     @Override
     public String toString() {
         return "LeieAvParkering{" +

@@ -1,19 +1,10 @@
 public class Pris {
+
+    //Variabler
     public double pris;
     public String prisPerX;
 
-    public Pris(double pris, String prisPerX) {
-        this.pris = pris;
-        this.prisPerX = prisPerX;
-    }
-
-    @Override
-    public String toString() {
-        return "Pris{" + "Kr" + pris +
-                " per " + prisPerX +
-                '}';
-    }
-
+    //Getters og Setters
     public double getPris() {
         return pris;
     }
@@ -28,5 +19,19 @@ public class Pris {
 
     public void setPrisPerX(String prisPerX) {
         this.prisPerX = prisPerX;
+    }
+
+    //Konstruktører
+    public Pris(double pris, String prisPerX) {
+        this.pris = pris;
+        this.prisPerX = prisPerX;
+    }
+
+    //toString metode
+    @Override
+    public String toString() {
+        return "Pris{" + "Kr" + pris +
+                " per " + prisPerX +
+                '}';
     }
 }

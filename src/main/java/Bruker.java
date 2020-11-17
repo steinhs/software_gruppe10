@@ -1,18 +1,13 @@
 public class Bruker {
+
+    //Variabler
     public String fornavn;
     public String etternavn;
     public Dato fodselsdato;
     public String epost;
     public int telefonnummer;
 
-    public Bruker(String fornavn, String etternavn, Dato fodselsdato, String epost, int telefonnummer) {
-        this.fornavn = fornavn;
-        this.etternavn = etternavn;
-        this.fodselsdato = fodselsdato;
-        this.epost = epost;
-        this.telefonnummer = telefonnummer;
-    }
-
+    //Getters og Setters
     public String getFornavn() {
         return fornavn;
     }
@@ -53,6 +48,16 @@ public class Bruker {
         this.telefonnummer = telefonnummer;
     }
 
+    //Konstruktører
+    public Bruker(String fornavn, String etternavn, Dato fodselsdato, String epost, int telefonnummer) {
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
+        this.fodselsdato = fodselsdato;
+        this.epost = epost;
+        this.telefonnummer = telefonnummer;
+    }
+
+    //toString metode
     @Override
     public String toString() {
         return "Bruker{" +

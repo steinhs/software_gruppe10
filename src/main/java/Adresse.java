@@ -1,8 +1,11 @@
 public class Adresse {
+
+    //Variabler
     public String gatenavn;
     public int gatenr;
     public String sted;
 
+    //Getters og Setters
     public String getGatenavn() {
         return gatenavn;
     }
@@ -27,14 +30,14 @@ public class Adresse {
         this.sted = sted;
     }
 
-
+    //Konstruktører
     public Adresse(String gatenavn, int gatenr, String sted) {
         this.gatenavn = gatenavn;
         this.gatenr = gatenr;
         this.sted = sted;
-
     }
 
+    //toString metode
     @Override
     public String toString() {
         return "Adresse{" +

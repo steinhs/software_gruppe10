@@ -1,14 +1,11 @@
 public class Tidspunkt {
+
+    //Variabler
     public int time;
     public int minutt;
     public int sekund;
 
-    public Tidspunkt(int time, int minutt, int sekund) {
-        this.time = time;
-        this.minutt = minutt;
-        this.sekund = sekund;
-    }
-
+    //Getters og Setters
     public int getTime() {
         return time;
     }
@@ -33,6 +30,14 @@ public class Tidspunkt {
         this.sekund = sekund;
     }
 
+    //Konstruktører
+    public Tidspunkt(int time, int minutt, int sekund) {
+        this.time = time;
+        this.minutt = minutt;
+        this.sekund = sekund;
+    }
+
+    //toString metode
     @Override
     public String toString() {
         return "Tidspunkt{" + time +
