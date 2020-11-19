@@ -25,19 +25,27 @@ public class Main {
         LeieAvParkering eheb14 = new LeieAvParkering(eivindhallan, eb14, new Leiedato(new Dato(16, 11, 2020), new Dato(16, 11, 2020)), new Leietid(new Tidspunkt(16, 40, 00), new Tidspunkt(17, 40, 00)), 4);
 
 
-        System.out.println("** Før sortering **");
+        System.out.println("   ** Før sortering ** ");
         System.out.println(Parkeringsplass.alleParkeringsplasser);
         //Sorter etter alfabetisk stedsnavn ( @Override compareTo i Parkeringsplass.java )
         Collections.sort(Parkeringsplass.alleParkeringsplasser);
-        System.out.println("** Etter sortering **");
+        System.out.println("   ** Etter sortering ** ");
         System.out.println(Parkeringsplass.alleParkeringsplasser);
 
-        System.out.println("** Vise parkeringer i Oslo **");
+        System.out.println(" ");
+
+        System.out.println("   ** Vise parkeringer i Oslo ** ");
         Parkeringsplass.sokEtterBy("Oslo");
-        System.out.println("* Vise parkeringer i Sarpsborg **");
+        System.out.println("   ** Vise parkeringer i Sarpsborg  ** ");
         Parkeringsplass.sokEtterBy("Sarpsborg");
 
+        System.out.println(" ");
 
+        System.out.println("   ** Før sletting ** ");
+        Parkeringsplass.visAlleParkeringsplassAdresser();
+        Parkeringsplass.slettParkering(bv13);
+        System.out.println("   ** Etter sletting ** ");
+        Parkeringsplass.visAlleParkeringsplassAdresser();
 
 
     }

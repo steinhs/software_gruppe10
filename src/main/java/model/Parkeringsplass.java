@@ -9,7 +9,7 @@ public class Parkeringsplass implements Comparable<Parkeringsplass> {
     public Pris pris;
     public Bruker utleier;
     public int antallParkeringer;
-    public static ArrayList<Parkeringsplass> alleParkeringsplasser = new ArrayList<Parkeringsplass>(); //Liste for alle opprettede parkeringsplasser
+    public static ArrayList<Parkeringsplass> alleParkeringsplasser = new ArrayList<>(); //Liste for alle opprettede parkeringsplasser
 
     //Getters og Setters
     public Adresse getAdresse() {
@@ -53,6 +53,14 @@ public class Parkeringsplass implements Comparable<Parkeringsplass> {
         alleParkeringsplasser.add(this); //Legger parkeringsplass til liste ved opprettelse
     }
 
+    //For å vise alle parkeringsplass adresser
+    public static void visAlleParkeringsplassAdresser(){
+        for (int i = 0; i < alleParkeringsplasser.size(); i++) {
+            System.out.println(alleParkeringsplasser.get(i).adresse.getGatenavn() + " " + alleParkeringsplasser.get(i).adresse.getGatenr());
+
+        }
+    }
+
     public static void sokEtterBy(String stedsnavn){
         ArrayList<Parkeringsplass> sokResultat = new ArrayList<Parkeringsplass>();
         for (int i = 0; i < alleParkeringsplasser.size() ; i++){
@@ -64,6 +72,14 @@ public class Parkeringsplass implements Comparable<Parkeringsplass> {
             System.out.println("** Ingen parkerinsplasser tilgjengelig i " + stedsnavn + " **");
         } else
         System.out.println(sokResultat);
+    }
+
+    public static void slettParkering(Parkeringsplass parkeringsplass){
+        for (int i = 0; i < alleParkeringsplasser.size(); i++){
+            if (alleParkeringsplasser.get(i).getAdresse() == parkeringsplass.getAdresse()){
+                alleParkeringsplasser.remove(i);
+            }
+        }
     }
 
     // Sorterer alfabetisk etter stedsnavn
