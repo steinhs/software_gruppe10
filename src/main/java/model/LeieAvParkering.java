@@ -1,3 +1,5 @@
+package model;
+
 public class LeieAvParkering {
 
     //Variabler
@@ -5,6 +7,7 @@ public class LeieAvParkering {
     public Parkeringsplass parkeringsplass;
     public Leiedato leiedato;
     public Leietid leietid;
+    public int onsketParkeringer;
 
     //Getters og Setters
     public Bruker getLeietaker() {
@@ -39,18 +42,30 @@ public class LeieAvParkering {
         this.leietid = leietid;
     }
 
+    public int getOnsketParkeringer() {
+        return onsketParkeringer;
+    }
+
+    public void setOnsketParkeringer(int onsketParkeringer) {
+        this.onsketParkeringer = onsketParkeringer;
+    }
+
     //Konstruktører
-    public LeieAvParkering(Bruker leietaker, Parkeringsplass parkeringsplass, Leiedato leiedato, Leietid leietid) {
+    public LeieAvParkering(Bruker leietaker, Parkeringsplass parkeringsplass, Leiedato leiedato, Leietid leietid, int onsketParkeringer) {
         this.leietaker = leietaker;
         this.parkeringsplass = parkeringsplass;
         this.leiedato = leiedato;
         this.leietid = leietid;
+
+        this.parkeringsplass.setAntallParkeringer(this.parkeringsplass.getAntallParkeringer()+onsketParkeringer);
     }
+
+
 
     //toString metode
     @Override
     public String toString() {
-        return "LeieAvParkering{" +
+        return "model.LeieAvParkering{" +
                 "leietaker=" + leietaker +
                 ", parkeringsplass=" + parkeringsplass +
                 ", leiedato=" + leiedato +

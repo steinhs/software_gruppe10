@@ -1,3 +1,5 @@
+package model;
+
 public class Bruker {
 
     //Variabler
@@ -60,7 +62,7 @@ public class Bruker {
     //toString metode
     @Override
     public String toString() {
-        return "Bruker{" +
+        return "model.Bruker{" +
                 "fornavn='" + fornavn + '\'' +
                 ", etternavn='" + etternavn + '\'' +
                 ", fodselsdato=" + fodselsdato +

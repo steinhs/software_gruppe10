@@ -1,3 +1,5 @@
+package model;
+
 public class Pris {
 
     //Variabler
@@ -30,7 +32,7 @@ public class Pris {
     //toString metode
     @Override
     public String toString() {
-        return "Pris{" + "Kr" + pris +
+        return "model.Pris{" + "Kr" + pris +
                 " per " + prisPerX +
                 '}';
     }

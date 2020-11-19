@@ -1,3 +1,5 @@
+package model;
+
 public class Leiedato {
 
     //Variabler
@@ -30,7 +32,7 @@ public class Leiedato {
     //toString metode
     @Override
     public String toString() {
-        return "Leietid{" +
+        return "model.Leietid{" +
                 "fradato=" + fradato +
                 ", tildato=" + tildato +
                 '}';

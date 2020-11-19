@@ -1,3 +1,5 @@
+package model;
+
 public class Adresse {
 
     //Variabler
@@ -40,7 +42,7 @@ public class Adresse {
     //toString metode
     @Override
     public String toString() {
-        return "Adresse{" +
+        return "model.Adresse{" +
                 "gatenavn='" + gatenavn + '\'' +
                 ", gatenr=" + gatenr +
                 ", sted='" + sted + '\'' +

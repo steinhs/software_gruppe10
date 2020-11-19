@@ -1,3 +1,5 @@
+package model;
+
 public class Tidspunkt {
 
     //Variabler
@@ -40,7 +42,7 @@ public class Tidspunkt {
     //toString metode
     @Override
     public String toString() {
-        return "Tidspunkt{" + time +
+        return "model.Tidspunkt{" + time +
                 ":" + minutt +
                 ":" + sekund +
                 '}';

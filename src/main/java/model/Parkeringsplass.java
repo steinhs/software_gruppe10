@@ -1,9 +1,12 @@
+package model;
+
 public class Parkeringsplass {
 
     //Variabler
     public Adresse adresse;
     public Pris pris;
     public Bruker utleier;
+    public int antallParkeringer;
 
     //Getters og Setters
     public Adresse getAdresse() {
@@ -30,17 +33,26 @@ public class Parkeringsplass {
         this.utleier = utleier;
     }
 
+    public int getAntallParkeringer() {
+        return antallParkeringer;
+    }
+
+    public void setAntallParkeringer(int antallParkeringer) {
+        this.antallParkeringer = antallParkeringer;
+    }
+
     //Konstruktører
-    public Parkeringsplass(Adresse adresse, Pris pris, Bruker utleier) {
+    public Parkeringsplass(Adresse adresse, Pris pris, Bruker utleier, int antallParkeringer) {
         this.adresse = adresse;
         this.pris = pris;
         this.utleier = utleier;
+        this.antallParkeringer = antallParkeringer;
     }
 
     //toString metode
     @Override
     public String toString() {
-        return "Parkeringsplass{" +
+        return "model.Parkeringsplass{" +
                 "adresse=" + adresse +
                 ", pris=" + pris +
                 ", utleier=" + utleier +
