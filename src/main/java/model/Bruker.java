@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Bruker {
 
     //Variabler
@@ -8,6 +10,7 @@ public class Bruker {
     public Dato fodselsdato;
     public String epost;
     public int telefonnummer;
+    public static ArrayList<Bruker> alleBrukere = new ArrayList<Bruker>(); //Liste for alle opprettede parkeringsplasser
 
     //Getters og Setters
     public String getFornavn() {
@@ -57,6 +60,7 @@ public class Bruker {
         this.fodselsdato = fodselsdato;
         this.epost = epost;
         this.telefonnummer = telefonnummer;
+        alleBrukere.add(this); //Legger bruker til liste
     }
 
     //toString metode

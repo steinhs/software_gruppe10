@@ -72,4 +72,6 @@ public class LeieAvParkering {
                 ", leietid=" + leietid +
                 '}';
     }
+
+
 }
