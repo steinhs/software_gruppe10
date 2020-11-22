@@ -32,7 +32,7 @@ public class Leiedato {
     //toString metode
     @Override
     public String toString() {
-        return "model.Leietid{" +
+        return "model.Leiedato{" +
                 "fradato=" + fradato +
                 ", tildato=" + tildato +
                 '}';

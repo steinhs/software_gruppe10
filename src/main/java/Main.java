@@ -5,11 +5,7 @@ import java.util.Collections;
 
 public class Main {
 
-
-
-
     public static void main(String[] args) {
-        System.out.println(" ");
 
         Adresse einerbakken14 = new Adresse("Einerbakken", 14, "Egersund");
         Adresse brattveien13 = new Adresse("Brattveien", 13, "Halden");
@@ -23,7 +19,8 @@ public class Main {
         Parkeringsplass bv13 = new Parkeringsplass(brattveien13, new Pris(13, "Time"), eivindhallan, 1);
         Parkeringsplass ov2 = new Parkeringsplass(oreveien2, new Pris(124, "Dag"), olanordy, 5);
 
-        LeieAvParkering eheb14 = new LeieAvParkering(eivindhallan, eb14, new Leiedato(new Dato(16, 11, 2020), new Dato(16, 11, 2020)), new Leietid(new Tidspunkt(16, 40, 00), new Tidspunkt(17, 40, 00)));
+        LeieAvParkering eheb14 = new LeieAvParkering(eivindhallan, eb14, new Leiedato(new Dato(16, 11, 2020), new Dato(16, 11, 2020)), new Leietid(new Tidspunkt(16, 40, 00), new Tidspunkt(17, 40, 00)), true);
+        LeieAvParkering eheb14F = new LeieAvParkering(eivindhallan, eb14, new Leiedato(new Dato(16, 11, 2020), new Dato(16, 11, 2020)), new Leietid(new Tidspunkt(16, 40, 00), new Tidspunkt(17, 40, 00)), false);
 
 
         System.out.println("   ** Før sortering ** ");

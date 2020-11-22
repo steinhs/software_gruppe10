@@ -9,6 +9,7 @@ public class LeieAvParkering {
     public Parkeringsplass parkeringsplass;
     public Leiedato leiedato;
     public Leietid leietid;
+    public boolean betalingsBekreftelse;
 
     //Getters og Setters
     public Bruker getLeietaker() {
@@ -45,28 +46,24 @@ public class LeieAvParkering {
 
 
     //Konstruktører
-    public LeieAvParkering(Bruker leietaker, Parkeringsplass parkeringsplass, Leiedato leiedato, Leietid leietid) {
+    public LeieAvParkering(Bruker leietaker, Parkeringsplass parkeringsplass, Leiedato leiedato, Leietid leietid, boolean bankBekreftelse) {
         this.leietaker = leietaker;
         this.parkeringsplass = parkeringsplass;
         this.leiedato = leiedato;
         this.leietid = leietid;
-        if (betalingAvParkering() == false){
-            throw new IllegalArgumentException("  ** Betaling feilet, prøv igjen senere **  ");
-        }
+        this.betalingsBekreftelse = bankBekreftelse;
+        betalingAvParkering(bankBekreftelse);
     }
 
-    public static boolean betalingAvParkering(){
-        boolean bankBekreftelse;
-        //sender kunde til betaling/verifiserer betalingsinformasjon med bank
-        bankBekreftelse = true; //svaret her blir true fra banken
-        //bankBekreftelse = false; //transaksjon feilet
-
+    public static boolean betalingAvParkering(boolean bankBekreftelse){
         if (bankBekreftelse == false){
+            System.out.println("  ** Betaling avslått, prøv igjen **  ");
+            System.out.println(" ");
             return false;
         } else if (bankBekreftelse == true){
             System.out.println("  ** Betaling fullført, parkeringsplass leid **  ");
+            System.out.println(" ");
         }
-        System.out.println(" ");
         return true;
     }
 
@@ -74,13 +71,12 @@ public class LeieAvParkering {
     //toString metode
     @Override
     public String toString() {
-        return "model.LeieAvParkering{" +
+        return "LeieAvParkering{" +
                 "leietaker=" + leietaker +
                 ", parkeringsplass=" + parkeringsplass +
                 ", leiedato=" + leiedato +
                 ", leietid=" + leietid +
+                ", betalingsBekreftelse=" + betalingsBekreftelse +
                 '}';
     }
-
-
 }
