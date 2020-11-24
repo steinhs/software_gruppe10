@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Parkeringsplass implements Comparable<Parkeringsplass> {
+public class Parkeringsplass {
 
     //Variabler
     public Adresse adresse;
@@ -10,6 +10,7 @@ public class Parkeringsplass implements Comparable<Parkeringsplass> {
     public Bruker utleier;
     public int antallParkeringer;
     public static ArrayList<Parkeringsplass> alleParkeringsplasser = new ArrayList<>(); //Liste for alle opprettede parkeringsplasser
+
 
     //Getters og Setters
     public Adresse getAdresse() {
@@ -66,12 +67,12 @@ public class Parkeringsplass implements Comparable<Parkeringsplass> {
         for (int i = 0; i < alleParkeringsplasser.size() ; i++){
             if (alleParkeringsplasser.get(i).adresse.getSted().contains(stedsnavn)){
                 sokResultat.add(alleParkeringsplasser.get(i));
+                System.out.println(alleParkeringsplasser.get(i).adresse.getGatenavn());
             }
         }
         if (sokResultat.isEmpty()) {
-            System.out.println("** Ingen parkerinsplasser tilgjengelig i " + stedsnavn + " **");
-        } else
-        System.out.println(sokResultat);
+            System.out.println("Ingen parkerinsplasser tilgjengelig i " + stedsnavn);
+        }
     }
 
     public static void slettParkering(Parkeringsplass parkeringsplass){
@@ -82,11 +83,6 @@ public class Parkeringsplass implements Comparable<Parkeringsplass> {
         }
     }
 
-    // Sorterer alfabetisk etter stedsnavn
-    @Override
-    public int compareTo(Parkeringsplass i) {
-        return this.adresse.getSted().compareTo(i.adresse.getSted());
-    }
 
 
     //toString metode

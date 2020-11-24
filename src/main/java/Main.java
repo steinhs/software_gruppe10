@@ -6,6 +6,7 @@ import java.util.Collections;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println(" ");
 
         Adresse einerbakken14 = new Adresse("Einerbakken", 14, "Egersund");
         Adresse brattveien13 = new Adresse("Brattveien", 13, "Halden");
@@ -23,15 +24,6 @@ public class Main {
         LeieAvParkering eheb14F = new LeieAvParkering(eivindhallan, eb14, new Leiedato(new Dato(16, 11, 2020), new Dato(16, 11, 2020)), new Leietid(new Tidspunkt(16, 40, 00), new Tidspunkt(17, 40, 00)), false);
 
 
-        System.out.println("   ** Før sortering ** ");
-        System.out.println(Parkeringsplass.alleParkeringsplasser);
-        //Sorter etter alfabetisk stedsnavn ( @Override compareTo i Parkeringsplass.java )
-        Collections.sort(Parkeringsplass.alleParkeringsplasser);
-        System.out.println("   ** Etter sortering ** ");
-        System.out.println(Parkeringsplass.alleParkeringsplasser);
-
-        System.out.println(" ");
-
         System.out.println("   ** Vise parkeringer i Oslo ** ");
         Parkeringsplass.sokEtterBy("Oslo");
         System.out.println("   ** Vise parkeringer i Sarpsborg  ** ");
@@ -44,8 +36,18 @@ public class Main {
         Parkeringsplass.slettParkering(bv13);
         System.out.println("   ** Etter sletting av Brattveien 13 ** ");
         Parkeringsplass.visAlleParkeringsplassAdresser();
+        System.out.println(" ");
 
-
+        System.out.println(" ");
+        System.out.println("Før motatt epost-bekreftelse");
+        System.out.println(steinhanssen.isEpostBekreftelseStatus());
+        System.out.println("Bruker bekrefter epost");
+        Bruker.mottaEpostBekreftelse("steinhs@mail.com");
+        System.out.println("Etter motatt epost-bekreftelse");
+        System.out.println(steinhanssen.isEpostBekreftelseStatus());
+        System.out.println(" ");
+        System.out.println("Prøver igjen");
+        Bruker.mottaEpostBekreftelse("steinhs@mail.com");
 
 
     }

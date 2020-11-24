@@ -11,6 +11,7 @@ public class Bruker {
     public String epost;
     public int telefonnummer;
     public static ArrayList<Bruker> alleBrukere = new ArrayList<Bruker>(); //Liste for alle opprettede parkeringsplasser
+    public boolean epostBekreftelseStatus;
 
     //Getters og Setters
     public String getFornavn() {
@@ -53,6 +54,14 @@ public class Bruker {
         this.telefonnummer = telefonnummer;
     }
 
+    public boolean isEpostBekreftelseStatus() {
+        return epostBekreftelseStatus;
+    }
+
+    public void setEpostBekreftelseStatus(boolean epostBekreftelseStatus) {
+        this.epostBekreftelseStatus = epostBekreftelseStatus;
+    }
+
     //Konstruktører
     public Bruker(String fornavn, String etternavn, Dato fodselsdato, String epost, int telefonnummer) {
         this.fornavn = fornavn;
@@ -60,18 +69,42 @@ public class Bruker {
         this.fodselsdato = fodselsdato;
         this.epost = epost;
         this.telefonnummer = telefonnummer;
+        this.epostBekreftelseStatus = false;
+        sendEpostBekreftelse(epost);
         alleBrukere.add(this); //Legger bruker til liste
     }
 
-    //toString metode
+    public static void sendEpostBekreftelse(String epost) {
+        //Sender epostbekreftelse til registrert epostadresse
+    }
+
+    public static int mottaEpostBekreftelse(String bekreftelseAvEpost){
+        for (int i = 0; i < alleBrukere.size(); i++) {
+            if (alleBrukere.get(i).getEpost().equals(bekreftelseAvEpost)){
+                if (alleBrukere.get(i).isEpostBekreftelseStatus() == false) {
+                    alleBrukere.get(i).setEpostBekreftelseStatus(true);
+                    System.out.println("Epost bekreftet");
+                    return 1;
+                } else if (alleBrukere.get(i).isEpostBekreftelseStatus() == true){
+                    System.out.println("Epost allerede bekreftet");
+                    return 2;
+                }
+            }
+        }
+        System.out.println("Ingen bruker med registrert epost");
+        return 0;
+    }
+
+
     @Override
     public String toString() {
-        return "model.Bruker{" +
+        return "Bruker{" +
                 "fornavn='" + fornavn + '\'' +
                 ", etternavn='" + etternavn + '\'' +
                 ", fodselsdato=" + fodselsdato +
                 ", epost='" + epost + '\'' +
                 ", telefonnummer=" + telefonnummer +
+                ", epostBekreftelseStatus=" + epostBekreftelseStatus +
                 '}';
     }
 }

@@ -41,11 +41,6 @@ class ParkeringsplassTest {
     }
 
     @Test
-    void sortere_parkeringsplasser_alfabetisk() {
-        Collections.sort(Parkeringsplass.alleParkeringsplasser);
-    }
-
-    @Test
     void testToString() {
         String expected = "model.Parkeringsplass{adresse=model.Adresse{gatenavn='Einerbakken', gatenr=14, sted='Egersund'}, pris=model.Pris{Kr200.0 per Dag}, utleier=model.Bruker{fornavn='Stein', etternavn='Hanssen', fodselsdato=Date{16-1-1996}, epost='steinhs@mail.com', telefonnummer=47359819}}";
 
