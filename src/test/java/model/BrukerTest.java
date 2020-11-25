@@ -24,10 +24,10 @@ class BrukerTest {
     }
 
     @Test
-    void testepost(){
+    void motta_epost_bekreftelse_men_epost_finnes_ikke(){
         Bruker steinhanssen = new Bruker("Stein", "Hanssen", new Dato(16,01,1996), "steinhs@mail.com", 47359819);
         int expected = 0;
-        Assert.assertEquals(expected, Bruker.mottaEpostBekreftelse("hei"));
+        Assert.assertEquals(expected, Bruker.mottaEpostBekreftelse("feilepost@meil.no"));
     }
 
     @Test
