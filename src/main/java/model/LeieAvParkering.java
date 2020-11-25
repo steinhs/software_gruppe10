@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class LeieAvParkering {
@@ -10,6 +11,8 @@ public class LeieAvParkering {
     public Leiedato leiedato;
     public Leietid leietid;
     public boolean betalingsBekreftelse;
+    public static ArrayList<LeieAvParkering> alleLeideParkeringsplasser = new ArrayList<LeieAvParkering>(); //Liste for alle leide parkeringsplasser som har bekreftet betaling
+
 
     //Getters og Setters
     public Bruker getLeietaker() {
@@ -56,6 +59,7 @@ public class LeieAvParkering {
         //setter status på om parkeringsplass er tatt ut fra om betaling fullføres
         if (betalingAvParkering(bankBekreftelse) == true){
             this.parkeringsplass.setParkeringTatt(true);
+            alleLeideParkeringsplasser.add(this);
         } else {
             this.parkeringsplass.setParkeringTatt(false);
         }

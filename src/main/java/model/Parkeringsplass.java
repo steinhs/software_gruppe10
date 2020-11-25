@@ -8,6 +8,7 @@ public class Parkeringsplass {
     public Adresse adresse;
     public Pris pris;
     public Bruker utleier;
+    public BrukerBedrift bedriftUtleier;
     public int antallParkeringer;
     public static ArrayList<Parkeringsplass> alleParkeringsplasser = new ArrayList<>(); //Liste for alle opprettede parkeringsplasser
     public boolean parkeringTatt = false;
@@ -54,11 +55,27 @@ public class Parkeringsplass {
         this.parkeringTatt = parkeringTatt;
     }
 
+    public BrukerBedrift getBedriftUtleier() {
+        return bedriftUtleier;
+    }
+
+    public void setBedriftUtleier(BrukerBedrift bedriftUtleier) {
+        this.bedriftUtleier = bedriftUtleier;
+    }
+
     //Konstruktører
     public Parkeringsplass(Adresse adresse, Pris pris, Bruker utleier, int antallParkeringer) {
         this.adresse = adresse;
         this.pris = pris;
         this.utleier = utleier;
+        this.antallParkeringer = antallParkeringer;
+        alleParkeringsplasser.add(this); //Legger parkeringsplass til liste ved opprettelse
+    }
+
+    public Parkeringsplass(Adresse adresse, Pris pris, BrukerBedrift bedriftUtleier, int antallParkeringer) {
+        this.adresse = adresse;
+        this.pris = pris;
+        this.bedriftUtleier = bedriftUtleier;
         this.antallParkeringer = antallParkeringer;
         alleParkeringsplasser.add(this); //Legger parkeringsplass til liste ved opprettelse
     }
