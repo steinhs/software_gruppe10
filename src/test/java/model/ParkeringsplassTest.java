@@ -15,10 +15,12 @@ class ParkeringsplassTest {
     Bruker steinhanssen = new Bruker("Stein", "Hanssen", new Dato(16,01,1996), "steinhs@mail.com", 47359819);
     Bruker eivindhallan = new Bruker("Eivind", "Hallan", new Dato(17, 12, 1996), "ehallan@mailer.no", 13378302);
     Bruker olanordy = new Bruker("Ola", "Nordmann", new Dato(05, 02, 2000), "on@mailer.no", 383471237);
+    BrukerBedrift olgasParkeringer = new BrukerBedrift("Olgas Parkeringer", 512311212, "olgasParks@mail.com", 32425412);
 
     Parkeringsplass eb14 = new Parkeringsplass(einerbakken14, new Pris(200, "Dag"), steinhanssen, 2);
     Parkeringsplass bv13 = new Parkeringsplass(brattveien13, new Pris(13, "Time"), eivindhallan, 1);
     Parkeringsplass ov2 = new Parkeringsplass(oreveien2, new Pris(124, "Dag"), olanordy, 5);
+    Parkeringsplass ov22 = new Parkeringsplass(oreveien2, new Pris(1200, "Uke"), olgasParkeringer, 1);
 
     @Test
     void vis_alle_parkeringsplasser() {
@@ -42,7 +44,7 @@ class ParkeringsplassTest {
 
     @Test
     void testToString() {
-        String expected = "model.Parkeringsplass{adresse=model.Adresse{gatenavn='Einerbakken', gatenr=14, sted='Egersund'}, pris=model.Pris{Kr200.0 per Dag}, utleier=model.Bruker{fornavn='Stein', etternavn='Hanssen', fodselsdato=Date{16-1-1996}, epost='steinhs@mail.com', telefonnummer=47359819}}";
+        String expected = "model.Parkeringsplass{adresse=model.Adresse{gatenavn='Einerbakken', gatenr=14, sted='Egersund'}, pris=model.Pris{Kr200.0 per Dag}, utleier=Bruker{fornavn='Stein', etternavn='Hanssen', fodselsdato=Date{16-1-1996}, epost='steinhs@mail.com', telefonnummer=47359819, epostBekreftelseStatus=false}}";
 
         Assert.assertEquals(expected, eb14.toString());
     }

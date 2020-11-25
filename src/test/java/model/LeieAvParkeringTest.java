@@ -29,7 +29,7 @@ class LeieAvParkeringTest {
 
     @Test
     void testToString() {
-        String expected = "LeieAvParkering{leietaker=model.Bruker{fornavn='Eivind', etternavn='Hallan', fodselsdato=Date{17-12-1996}, epost='ehallan@mailer.no', telefonnummer=13378302}, parkeringsplass=model.Parkeringsplass{adresse=model.Adresse{gatenavn='Einerbakken', gatenr=14, sted='Egersund'}, pris=model.Pris{Kr200.0 per Dag}, utleier=model.Bruker{fornavn='Stein', etternavn='Hanssen', fodselsdato=Date{16-1-1996}, epost='steinhs@mail.com', telefonnummer=47359819}}, leiedato=model.Leiedato{fradato=Date{16-11-2020}, tildato=Date{16-11-2020}}, leietid=model.Leietid{fratid=model.Tidspunkt{16:40:0}, tiltid=model.Tidspunkt{17:40:0}}, betalingsBekreftelse=true}";
+        String expected = "LeieAvParkering{leietaker=Bruker{fornavn='Eivind', etternavn='Hallan', fodselsdato=Date{17-12-1996}, epost='ehallan@mailer.no', telefonnummer=13378302, epostBekreftelseStatus=false}, parkeringsplass=model.Parkeringsplass{adresse=model.Adresse{gatenavn='Einerbakken', gatenr=14, sted='Egersund'}, pris=model.Pris{Kr200.0 per Dag}, utleier=Bruker{fornavn='Stein', etternavn='Hanssen', fodselsdato=Date{16-1-1996}, epost='steinhs@mail.com', telefonnummer=47359819, epostBekreftelseStatus=false}}, leiedato=model.Leiedato{fradato=Date{16-11-2020}, tildato=Date{16-11-2020}}, leietid=model.Leietid{fratid=model.Tidspunkt{16:40:0}, tiltid=model.Tidspunkt{17:40:0}}, betalingsBekreftelse=true}";
         Assert.assertEquals(expected, eheb14.toString());
     }
 }

@@ -9,16 +9,14 @@ public class BrukerBedrift {
     public long orgnr;
     public String epost;
     public int telefonnummer;
-    public Adresse bedriftAdresse;
     public static ArrayList<BrukerBedrift> alleBedrifter = new ArrayList<BrukerBedrift>(); //Liste for alle opprettede parkeringsplasser
     public boolean epostBekreftelseStatus;
 
-    public BrukerBedrift(String bedriftNavn, long orgnr, String epost, int telefonnummer, Adresse bedriftAdresse) {
+    public BrukerBedrift(String bedriftNavn, long orgnr, String epost, int telefonnummer) {
         this.bedriftNavn = bedriftNavn;
         this.orgnr = orgnr;
         this.epost = epost;
         this.telefonnummer = telefonnummer;
-        this.bedriftAdresse = bedriftAdresse;
         this.epostBekreftelseStatus = false;
         sendEpostBekreftelse(epost);
         alleBedrifter.add(this); //Legger bedrifter til liste
@@ -86,14 +84,6 @@ public class BrukerBedrift {
         this.telefonnummer = telefonnummer;
     }
 
-    public Adresse getBedriftAdresse() {
-        return bedriftAdresse;
-    }
-
-    public void setBedriftAdresse(Adresse bedriftAdresse) {
-        this.bedriftAdresse = bedriftAdresse;
-    }
-
 
     @Override
     public String toString() {
@@ -102,7 +92,6 @@ public class BrukerBedrift {
                 ", orgnr=" + orgnr +
                 ", epost='" + epost + '\'' +
                 ", telefonnummer=" + telefonnummer +
-                ", bedriftAdresse=" + bedriftAdresse +
                 ", epostBekreftelseStatus=" + epostBekreftelseStatus +
                 '}';
     }
