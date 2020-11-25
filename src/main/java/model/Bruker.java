@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Bruker {
+public class Bruker{
 
     //Variabler
     public String fornavn;
@@ -12,6 +12,18 @@ public class Bruker {
     public int telefonnummer;
     public static ArrayList<Bruker> alleBrukere = new ArrayList<Bruker>(); //Liste for alle opprettede parkeringsplasser
     public boolean epostBekreftelseStatus;
+
+    //Konstruktører
+    public Bruker(String fornavn, String etternavn, Dato fodselsdato, String epost, int telefonnummer) {
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
+        this.fodselsdato = fodselsdato;
+        this.epost = epost;
+        this.telefonnummer = telefonnummer;
+        this.epostBekreftelseStatus = false;
+        sendEpostBekreftelse(epost);
+        alleBrukere.add(this); //Legger bruker til liste
+    }
 
     //Getters og Setters
     public String getFornavn() {
@@ -62,17 +74,7 @@ public class Bruker {
         this.epostBekreftelseStatus = epostBekreftelseStatus;
     }
 
-    //Konstruktører
-    public Bruker(String fornavn, String etternavn, Dato fodselsdato, String epost, int telefonnummer) {
-        this.fornavn = fornavn;
-        this.etternavn = etternavn;
-        this.fodselsdato = fodselsdato;
-        this.epost = epost;
-        this.telefonnummer = telefonnummer;
-        this.epostBekreftelseStatus = false;
-        sendEpostBekreftelse(epost);
-        alleBrukere.add(this); //Legger bruker til liste
-    }
+
 
     public static void sendEpostBekreftelse(String epost) {
         //Sender epostbekreftelse til registrert epostadresse

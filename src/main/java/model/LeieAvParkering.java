@@ -52,8 +52,16 @@ public class LeieAvParkering {
         this.leiedato = leiedato;
         this.leietid = leietid;
         this.betalingsBekreftelse = bankBekreftelse;
-        betalingAvParkering(bankBekreftelse);
+        //betalingAvParkering(bankBekreftelse);
+        //setter status på om parkeringsplass er tatt ut fra om betaling fullføres
+        if (betalingAvParkering(bankBekreftelse) == true){
+            this.parkeringsplass.setParkeringTatt(true);
+        } else {
+            this.parkeringsplass.setParkeringTatt(false);
+        }
     }
+
+
 
     public static boolean betalingAvParkering(boolean bankBekreftelse){
         if (bankBekreftelse == false){

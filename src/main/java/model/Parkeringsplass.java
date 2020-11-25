@@ -10,6 +10,7 @@ public class Parkeringsplass {
     public Bruker utleier;
     public int antallParkeringer;
     public static ArrayList<Parkeringsplass> alleParkeringsplasser = new ArrayList<>(); //Liste for alle opprettede parkeringsplasser
+    public boolean parkeringTatt = false;
 
 
     //Getters og Setters
@@ -43,6 +44,14 @@ public class Parkeringsplass {
 
     public void setAntallParkeringer(int antallParkeringer) {
         this.antallParkeringer = antallParkeringer;
+    }
+
+    public boolean isParkeringTatt() {
+        return parkeringTatt;
+    }
+
+    public void setParkeringTatt(boolean parkeringTatt) {
+        this.parkeringTatt = parkeringTatt;
     }
 
     //Konstruktører
