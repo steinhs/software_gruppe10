@@ -1,6 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Parkeringsplass {
 
@@ -81,18 +84,18 @@ public class Parkeringsplass {
 
     //For å vise alle parkeringsplass adresser
     public static void visAlleParkeringsplassAdresser(){
-        for (int i = 0; i < alleParkeringsplasser.size(); i++) {
-            System.out.println(alleParkeringsplasser.get(i).adresse.getGatenavn() + " " + alleParkeringsplasser.get(i).adresse.getGatenr());
+        for (Parkeringsplass parkeringsplass : alleParkeringsplasser) {
+            System.out.println(parkeringsplass.adresse.getGatenavn() + " " + parkeringsplass.adresse.getGatenr());
 
         }
     }
 
     public static void sokEtterBy(String stedsnavn){
-        ArrayList<Parkeringsplass> sokResultat = new ArrayList<Parkeringsplass>();
-        for (int i = 0; i < alleParkeringsplasser.size() ; i++){
-            if (alleParkeringsplasser.get(i).adresse.getSted().contains(stedsnavn)){
-                sokResultat.add(alleParkeringsplasser.get(i));
-                System.out.println(alleParkeringsplasser.get(i).adresse.getGatenavn());
+        ArrayList<Parkeringsplass> sokResultat = new ArrayList<>();
+        for (Parkeringsplass parkeringsplass : alleParkeringsplasser) {
+            if (parkeringsplass.adresse.getSted().contains(stedsnavn)) {
+                sokResultat.add(parkeringsplass);
+                System.out.println(parkeringsplass.adresse.getGatenavn());
             }
         }
         if (sokResultat.isEmpty()) {
@@ -129,6 +132,43 @@ public class Parkeringsplass {
             sokResultat.sort(Parkeringsplass.parkeringsplassComparatorPrisHoy);
         }
 
+        //Alfabetisk
+        if (sorteringsMetode==2) {
+            sokResultat.sort(Parkeringsplass.parkeringsplassComparatorAlfabetisk);
+        }
+
+        return sokResultat;
+    }
+
+    //Sorteringsmetoder
+    public static Comparator<Parkeringsplass> parkeringsplassComparatorPrisLav = (p1, p2) -> {
+        double p1Pris = p1.getPris().getPrisPerTime();
+        double p2Pris = p2.getPris().getPrisPerTime();
+
+        if (p1Pris<p2Pris)
+            return -1;
+         else if (p2Pris<p1Pris)
+            return 1;
+        return 0;
+    };
+
+    public static Comparator<Parkeringsplass> parkeringsplassComparatorPrisHoy = (p1, p2) -> {
+        double p1Pris = p1.getPris().getPrisPerTime();
+        double p2Pris = p2.getPris().getPrisPerTime();
+
+        if (p1Pris>p2Pris)
+            return -1;
+        else if (p2Pris>p1Pris)
+            return 1;
+        return 0;
+    };
+
+    public static Comparator<Parkeringsplass> parkeringsplassComparatorAlfabetisk = (p1, p2) -> {
+        String p1StedsNavn = p1.getAdresse().getSted();
+        String p2Stedsnavn = p2.getAdresse().getSted();
+
+        return p1StedsNavn.compareTo(p2Stedsnavn);
+    };
 
     //toString metode
     @Override
