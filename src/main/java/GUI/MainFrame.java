@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-    JButton leieKnapp, utleieKnapp, profilKnapp, instillingerKnapp, leieSokeKnapp;
-    JPanel leiePanel, utleiePanel, profilPanel, instillingerPanel, mainPanel, leiePanelSokResultat;
+    JButton leieKnapp, utleieKnapp, profilKnapp, instillingerKnapp, leieSokeKnapp, betalingsKnapp;
+    JPanel leiePanel, utleiePanel, profilPanel, instillingerPanel, mainPanel, leiePanelSokResultat, kjopePanel;
     JTextField sokeFeltLeie;
     JComboBox<String> sorteringsMetoderDropdown;
     Color bakgrunnFarge1 = new Color(203,241,245);
@@ -111,6 +111,12 @@ public class MainFrame extends JFrame implements ActionListener {
         leiePanelSokResultat.setBounds(400,200,480,430);
         leiePanelSokResultat.setLayout(null);
 
+        kjopePanel = new JPanel();
+        kjopePanel.setBounds(300, 250, 680, 330);
+        kjopePanel.setBackground(new Color(170, 224, 229));
+        kjopePanel.setBorder(BorderFactory.createLineBorder(fontFarge1, 3));
+        kjopePanel.setLayout(null);
+
         utleiePanel = new JPanel();
         utleiePanel.setBackground(new Color(129,219,167));
         utleiePanel.setBounds(0,100,1280,550);
@@ -154,6 +160,7 @@ public class MainFrame extends JFrame implements ActionListener {
         this.add(tittelPanel);
         this.add(mainPanel);
         this.add(footnote);
+        this.add(kjopePanel);
         this.add(leiePanelSokResultat);
         this.add(leiePanel);
         this.add(utleiePanel);
@@ -162,6 +169,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
         //Gjør GUI synelig.
 
+        kjopePanel.setVisible(false);
         leiePanelSokResultat.setVisible(false);
         leiePanel.setVisible(false);
         utleiePanel.setVisible(false);
@@ -224,21 +232,24 @@ public class MainFrame extends JFrame implements ActionListener {
 
             for (int i = 0; i < sokResultat.size(); i++) {
 
-                labels[i]=new JLabel(String.format("Sted: %s, Pris: %.2f", sokResultat.get(i).getAdresse().getSted(), sokResultat.get(i).getPris().getPrisPerTime()));
+                String sted = sokResultat.get(i).getAdresse().getSted();
+                double pris = sokResultat.get(i).getPris().getPrisPerTime();
+
+                labels[i]=new JLabel(String.format("Sted: %s, Pris: %.2f", sted, pris));
                 buttons[i]=new JButton("Lei " + i);
 
-
-                buttons[i].setBounds(360, (100*i)+25, 80, 50);
+                buttons[i].setBounds(350, 25, 80, 50);
                 buttons[i].setFocusable(false);
                 buttons[i].setFont(new Font("Helvetica", Font.BOLD, 12));
                 buttons[i].setBackground(bakgrunnFarge2);
                 buttons[i].setForeground(fontFarge1);
+                buttons[i].addActionListener(d -> kjopePanelMetode(sted, pris));
+
+                labels[i].add(buttons[i]);
 
                 labels[i].setFont(new Font("Helvetica", Font.BOLD, 26));
                 labels[i].setForeground(fontFarge1);
-                labels[i].setBounds(30, (100*i),480,100);
-                labels[i].add(buttons[i]);
-                labels[i].setHorizontalAlignment(JLabel.LEFT);
+                labels[i].setBounds(15, (100*i),480,100);
 
                 leiePanelSokResultat.setBorder(BorderFactory.createLineBorder(fontFarge1,2));
                 leiePanelSokResultat.add(labels[i]);
@@ -247,5 +258,39 @@ public class MainFrame extends JFrame implements ActionListener {
 
             leiePanelSokResultat.setVisible(true);
         }
+        if (e.getSource()==betalingsKnapp) {
+            kjopePanel.setVisible(false);
+            leiePanelSokResultat.removeAll();
+            leiePanel.removeAll();
+            mainPanel.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Betaling er godkjent!", "Betalingsbekreftelse", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+    public void kjopePanelMetode(String sted, double pris) {
+        leiePanelSokResultat.setVisible(false);
+
+        leiePanelSokResultat.removeAll();
+        leiePanelSokResultat.repaint();
+
+        JLabel stedOgPrislabel = new JLabel(String.format("%s: %.2f kr,- i timen", sted, pris));
+        stedOgPrislabel.setFont(new Font("Helvetica", Font.BOLD, 32));
+        stedOgPrislabel.setForeground(fontFarge1);
+        stedOgPrislabel.setHorizontalAlignment(JLabel.CENTER);
+        stedOgPrislabel.setBounds(0, 20,680,100);
+
+        betalingsKnapp = new JButton("Kjøp");
+        betalingsKnapp.addActionListener(this);
+        betalingsKnapp.setFont(new Font("Helvetica", Font.BOLD, 34));
+        betalingsKnapp.setFocusable(false);
+        betalingsKnapp.setBackground(bakgrunnFarge2);
+        betalingsKnapp.setForeground(fontFarge1);
+        betalingsKnapp.setBorder(BorderFactory.createLineBorder(fontFarge1,2));
+        betalingsKnapp.setHorizontalAlignment(JLabel.CENTER);
+        betalingsKnapp.setBounds(260, 140,160,90);
+
+        kjopePanel.add(stedOgPrislabel);
+        kjopePanel.add(betalingsKnapp);
+
+        kjopePanel.setVisible(true);
     }
 }
