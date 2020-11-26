@@ -1,14 +1,19 @@
 package GUI;
 
+import model.Parkeringsplass;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-    JButton leieKnapp, utleieKnapp, profilKnapp, instillingerKnapp;
-    JPanel leiePanel, utleiePanel, profilPanel, instillingerPanel, mainPanel;
+    JButton leieKnapp, utleieKnapp, profilKnapp, instillingerKnapp, leieSokeKnapp;
+    JPanel leiePanel, utleiePanel, profilPanel, instillingerPanel, mainPanel, leiePanelSokResultat;
+    JTextField sokeFeltLeie;
+    JComboBox<String> sorteringsMetoderDropdown;
     Color bakgrunnFarge1 = new Color(203,241,245);
     Color bakgrunnFarge2 = new Color(166,227,233);
     Color fontFarge1 = new Color(113,201,206);
@@ -25,13 +30,13 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setLayout(null);
 
         //Lage tekstfelt.
-        JTextField sokeFeltLeie = new JTextField();
-        sokeFeltLeie.setBounds(490, 120, 300,50);
+        sokeFeltLeie = new JTextField();
+        sokeFeltLeie.setBounds(490, 30, 300,50);
         sokeFeltLeie.setFont(new Font("Helvetica", Font.PLAIN, 22));
 
 
         //Lage knapper.
-        leieKnapp = new JButton("Leie");   //Knapp for å leie.
+        leieKnapp = new JButton("Leie");   //Knapp for leie.
         leieKnapp.setFocusable(false);
         leieKnapp.addActionListener(this);
         leieKnapp.setFont(new Font("Helvetica", Font.BOLD, 28));
@@ -39,7 +44,7 @@ public class MainFrame extends JFrame implements ActionListener {
         leieKnapp.setForeground(fontFarge1);
         leieKnapp.setBorder(null);
 
-        utleieKnapp = new JButton("Utleie");   //Knapp for å leie.
+        utleieKnapp = new JButton("Utleie");   //Knapp for utleie.
         utleieKnapp.setFocusable(false);
         utleieKnapp.addActionListener(this);
         utleieKnapp.setFont(new Font("Helvetica", Font.BOLD, 28));
@@ -47,7 +52,7 @@ public class MainFrame extends JFrame implements ActionListener {
         utleieKnapp.setForeground(fontFarge1);
         utleieKnapp.setBorder(null);
 
-        profilKnapp = new JButton("Profil");   //Knapp for å leie.
+        profilKnapp = new JButton("Profil");   //Knapp for å sjekke profil.
         profilKnapp.setFocusable(false);
         profilKnapp.addActionListener(this);
         profilKnapp.setFont(new Font("Helvetica", Font.BOLD, 28));
@@ -55,7 +60,7 @@ public class MainFrame extends JFrame implements ActionListener {
         profilKnapp.setForeground(fontFarge1);
         profilKnapp.setBorder(null);
 
-        instillingerKnapp = new JButton("Instillinger");   //Knapp for å leie.
+        instillingerKnapp = new JButton("Instillinger");   //Knapp for å sjekke innstillinger.
         instillingerKnapp.setFocusable(false);
         instillingerKnapp.addActionListener(this);
         instillingerKnapp.setFont(new Font("Helvetica", Font.BOLD, 28));
@@ -63,11 +68,26 @@ public class MainFrame extends JFrame implements ActionListener {
         instillingerKnapp.setForeground(fontFarge1);
         instillingerKnapp.setBorder(null);
 
+        leieSokeKnapp = new JButton("Søk");   //Knapp for å søke.
+        leieSokeKnapp.setFocusable(false);
+        leieSokeKnapp.addActionListener(this);
+        leieSokeKnapp.setFont(new Font("Helvetica", Font.BOLD, 28));
+        leieSokeKnapp.setBackground(bakgrunnFarge2);
+        leieSokeKnapp.setForeground(fontFarge1);
+        leieSokeKnapp.setBounds(810,30, 86, 50);
+
         //Lage Ikon til applikasjonen. (fant ingen bra ikoner så ga opp på det :c)
         ImageIcon image1 = new ImageIcon("src/imgs/icon4.png");
         this.setIconImage(image1.getImage());
 
-        //Paneler til velkomsts/login skjerm.
+        //Lage dropdownmeny for sortering
+        String[] sorteringsMetoder = {"Pris(Lav)", "Pris(Høy)", "Alfabetisk"};
+        sorteringsMetoderDropdown = new JComboBox<>(sorteringsMetoder);
+        sorteringsMetoderDropdown.addActionListener(this);
+        sorteringsMetoderDropdown.setFocusable(false);
+        sorteringsMetoderDropdown.setBounds(370, 30, 100, 50);
+
+        //Paneler
         JPanel tittelPanel = new JPanel();
         tittelPanel.setBackground(bakgrunnFarge1);
         tittelPanel.setBounds(0,0,1280,100);
@@ -85,6 +105,11 @@ public class MainFrame extends JFrame implements ActionListener {
         leiePanel = new JPanel();
         leiePanel.setBackground(bakgrunnFarge1);
         leiePanel.setBounds(0,100,1280,550);
+        leiePanel.setLayout(null);
+
+        leiePanelSokResultat = new JPanel();
+        leiePanelSokResultat.setBounds(400,200,480,430);
+        leiePanelSokResultat.setLayout(null);
 
         utleiePanel = new JPanel();
         utleiePanel.setBackground(new Color(129,219,167));
@@ -115,7 +140,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
         mainPanel.add(mainPanelBackgroundLabel);
 
-
+        leiePanel.add(sorteringsMetoderDropdown);
+        leiePanel.add(sokeFeltLeie);
+        leiePanel.add(leieSokeKnapp);
 
         footnote.add(leieKnapp);
         footnote.add(utleieKnapp);
@@ -127,12 +154,15 @@ public class MainFrame extends JFrame implements ActionListener {
         this.add(tittelPanel);
         this.add(mainPanel);
         this.add(footnote);
+        this.add(leiePanelSokResultat);
         this.add(leiePanel);
         this.add(utleiePanel);
         this.add(profilPanel);
         this.add(instillingerPanel);
 
         //Gjør GUI synelig.
+
+        leiePanelSokResultat.setVisible(false);
         leiePanel.setVisible(false);
         utleiePanel.setVisible(false);
         profilPanel.setVisible(false);
@@ -144,6 +174,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==leieKnapp) {
             mainPanel.setVisible(false);
+            leiePanelSokResultat.setVisible(false);
             leiePanel.setVisible(true);
             utleiePanel.setVisible(false);
             profilPanel.setVisible(false);
@@ -153,6 +184,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         if(e.getSource()==utleieKnapp) {
             mainPanel.setVisible(false);
+            leiePanelSokResultat.setVisible(false);
             leiePanel.setVisible(false);
             utleiePanel.setVisible(true);
             profilPanel.setVisible(false);
@@ -162,6 +194,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         if(e.getSource()==profilKnapp) {
             mainPanel.setVisible(false);
+            leiePanelSokResultat.setVisible(false);
             leiePanel.setVisible(false);
             utleiePanel.setVisible(false);
             profilPanel.setVisible(true);
@@ -171,12 +204,48 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         if(e.getSource()==instillingerKnapp) {
             mainPanel.setVisible(false);
+            leiePanelSokResultat.setVisible(false);
             leiePanel.setVisible(false);
             utleiePanel.setVisible(false);
             profilPanel.setVisible(false);
             instillingerPanel.setVisible(true);
 
             System.out.println("innstillinger!");
+        }
+
+        if(e.getSource()==leieSokeKnapp) {
+            ArrayList<Parkeringsplass> sokResultat = Parkeringsplass.sokEtterParkeringsPlassOgSorter(sorteringsMetoderDropdown.getSelectedIndex(), sokeFeltLeie.getText());
+
+            JLabel[] labels = new JLabel[sokResultat.size()];
+            JButton[] buttons = new JButton[sokResultat.size()];
+
+            leiePanelSokResultat.removeAll();
+            leiePanelSokResultat.repaint();
+
+            for (int i = 0; i < sokResultat.size(); i++) {
+
+                labels[i]=new JLabel(String.format("Sted: %s, Pris: %.2f", sokResultat.get(i).getAdresse().getSted(), sokResultat.get(i).getPris().getPrisPerTime()));
+                buttons[i]=new JButton("Lei " + i);
+
+
+                buttons[i].setBounds(360, (100*i)+25, 80, 50);
+                buttons[i].setFocusable(false);
+                buttons[i].setFont(new Font("Helvetica", Font.BOLD, 12));
+                buttons[i].setBackground(bakgrunnFarge2);
+                buttons[i].setForeground(fontFarge1);
+
+                labels[i].setFont(new Font("Helvetica", Font.BOLD, 26));
+                labels[i].setForeground(fontFarge1);
+                labels[i].setBounds(30, (100*i),480,100);
+                labels[i].add(buttons[i]);
+                labels[i].setHorizontalAlignment(JLabel.LEFT);
+
+                leiePanelSokResultat.setBorder(BorderFactory.createLineBorder(fontFarge1,2));
+                leiePanelSokResultat.add(labels[i]);
+
+            }
+
+            leiePanelSokResultat.setVisible(true);
         }
     }
 }

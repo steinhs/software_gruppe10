@@ -54,7 +54,6 @@ public class Parkeringsplass {
     public void setParkeringTatt(boolean parkeringTatt) {
         this.parkeringTatt = parkeringTatt;
     }
-
     public BrukerBedrift getBedriftUtleier() {
         return bedriftUtleier;
     }
@@ -109,6 +108,26 @@ public class Parkeringsplass {
         }
     }
 
+    public static ArrayList<Parkeringsplass> sokEtterParkeringsPlassOgSorter(int sorteringsMetode, String sok) {
+        ArrayList<Parkeringsplass> sokResultat = new ArrayList<>();
+        System.out.println("Sorteringsmetode: " + sorteringsMetode);
+        System.out.println("Søk var: " + sok);
+
+        for (Parkeringsplass parkeringsplass : alleParkeringsplasser) {
+            if (parkeringsplass.adresse.getSted().contains(sok)) {
+                sokResultat.add(parkeringsplass);
+            }
+        }
+
+        //Pris (Lav)
+        if (sorteringsMetode==0) {
+            sokResultat.sort(Parkeringsplass.parkeringsplassComparatorPrisLav);
+        }
+
+        //Pris (Høy)
+        if (sorteringsMetode==1) {
+            sokResultat.sort(Parkeringsplass.parkeringsplassComparatorPrisHoy);
+        }
 
 
     //toString metode
