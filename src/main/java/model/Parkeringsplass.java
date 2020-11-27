@@ -114,8 +114,6 @@ public class Parkeringsplass {
 
     public static ArrayList<Parkeringsplass> sokEtterParkeringsPlassOgSorter(int sorteringsMetode, String sok) {
         ArrayList<Parkeringsplass> sokResultat = new ArrayList<>();
-        System.out.println("Sorteringsmetode: " + sorteringsMetode);
-        System.out.println("Søk var: " + sok);
 
         for (Parkeringsplass parkeringsplass : alleParkeringsplasser) {
             if (parkeringsplass.adresse.getSted().contains(sok)) {

@@ -187,8 +187,6 @@ public class MainFrame extends JFrame implements ActionListener {
             utleiePanel.setVisible(false);
             profilPanel.setVisible(false);
             instillingerPanel.setVisible(false);
-
-            System.out.println("login.");
         }
         if(e.getSource()==utleieKnapp) {
             mainPanel.setVisible(false);
@@ -197,8 +195,6 @@ public class MainFrame extends JFrame implements ActionListener {
             utleiePanel.setVisible(true);
             profilPanel.setVisible(false);
             instillingerPanel.setVisible(false);
-
-            System.out.println("utleie!");
         }
         if(e.getSource()==profilKnapp) {
             mainPanel.setVisible(false);
@@ -207,8 +203,6 @@ public class MainFrame extends JFrame implements ActionListener {
             utleiePanel.setVisible(false);
             profilPanel.setVisible(true);
             instillingerPanel.setVisible(false);
-
-            System.out.println("profil!");
         }
         if(e.getSource()==instillingerKnapp) {
             mainPanel.setVisible(false);
@@ -217,8 +211,6 @@ public class MainFrame extends JFrame implements ActionListener {
             utleiePanel.setVisible(false);
             profilPanel.setVisible(false);
             instillingerPanel.setVisible(true);
-
-            System.out.println("innstillinger!");
         }
 
         if(e.getSource()==leieSokeKnapp) {
@@ -236,7 +228,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 double pris = sokResultat.get(i).getPris().getPrisPerTime();
 
                 labels[i]=new JLabel(String.format("Sted: %s, Pris: %.2f", sted, pris));
-                buttons[i]=new JButton("Lei " + i);
+                buttons[i]=new JButton("Lei " + (i+1));
 
                 buttons[i].setBounds(350, 25, 80, 50);
                 buttons[i].setFocusable(false);
