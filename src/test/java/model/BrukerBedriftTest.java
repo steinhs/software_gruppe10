@@ -33,4 +33,18 @@ class BrukerBedriftTest {
         String expected = "BrukerBedrift{bedriftNavn='Olgas Parkeringer', orgnr=512311212, epost='olgasParks@mail.com', telefonnummer=32425412, epostBekreftelseStatus=false}";
         Assert.assertEquals(expected, olgasParkeringer.toString());
     }
+
+    @Test
+    void get_og_set_Tester() {
+        olgasParkeringer.getEpost();
+        olgasParkeringer.getBedriftNavn();
+        olgasParkeringer.getOrgnr();
+        olgasParkeringer.getTelefonnummer();
+
+        olgasParkeringer.setEpost("epost");
+        olgasParkeringer.setEpostBekreftelseStatus(true);
+        olgasParkeringer.setBedriftNavn("Olgas bedrifter");
+        olgasParkeringer.setOrgnr(2);
+        olgasParkeringer.setTelefonnummer(11223344);
+    }
 }

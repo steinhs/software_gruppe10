@@ -15,4 +15,15 @@ class LeiedatoTest {
 
         Assert.assertEquals(expected, leiedatoeks.toString());
     }
+
+    @Test
+    void get_og_set_tester() {
+        Leiedato testleiedato = new Leiedato(new Dato(1,1,2021), new Dato(1, 1,2021));
+
+        testleiedato.getFradato();
+        testleiedato.getTildato();
+
+        testleiedato.setFradato(new Dato(2,1,2021));
+        testleiedato.setTildato(new Dato(2,1,2021));
+    }
 }

@@ -17,22 +17,14 @@ class PrisTest {
     }
 
     @Test
-    void getPris() {
+    void get_og_set_tester() {
+
+        priseks.getPrisPerTime();
         priseks.getPris();
-    }
-
-    @Test
-    void setPris() {
-        priseks.setPris(130);
-    }
-
-    @Test
-    void getPrisPerX() {
         priseks.getPrisPerX();
-    }
 
-    @Test
-    void setPrisPerX() {
-        priseks.setPrisPerX("minutt");
+        priseks.setPris(2);
+        priseks.setPrisPerX("Time");
+        priseks.setPrisPerTime(2);
     }
 }
