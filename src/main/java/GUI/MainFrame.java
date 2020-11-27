@@ -260,8 +260,8 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         if (e.getSource()==betalingsKnapp) {
             kjopePanel.setVisible(false);
-            leiePanelSokResultat.removeAll();
-            leiePanel.removeAll();
+            leiePanel.setVisible(false);
+            leiePanelSokResultat.setVisible(false);
             mainPanel.setVisible(true);
             JOptionPane.showMessageDialog(null, "Betaling er godkjent!", "Betalingsbekreftelse", JOptionPane.PLAIN_MESSAGE);
         }
