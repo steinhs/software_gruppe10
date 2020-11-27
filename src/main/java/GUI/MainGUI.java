@@ -2,6 +2,8 @@ package GUI;
 
 import model.*;
 
+import java.util.ArrayList;
+
 public class MainGUI {
     public static void main(String[] args) {
 
@@ -18,6 +20,10 @@ public class MainGUI {
         Bruker steinhanssen = new Bruker("Stein", "Hanssen", new Dato(16,1,1996), "steinhs@mail.com", 47359819);
         Bruker eivindhallan = new Bruker("Eivind", "Hallan", new Dato(17, 12, 1996), "ehallan@mailer.no", 13378302);
         BrukerBedrift olgasParkeringer = new BrukerBedrift("Olgas Parkeringer", 512311212, "olgasParks@mail.com", 32425412);
+
+        ArrayList<Bruker> privatpersonBrukere = new ArrayList<>();
+        privatpersonBrukere.add(steinhanssen);
+        privatpersonBrukere.add(eivindhallan);
 
         Parkeringsplass eb14 = new Parkeringsplass(einerbakken14, new Pris(200, "Dag"), steinhanssen, 2);
         Parkeringsplass bv13 = new Parkeringsplass(brattveien13, new Pris(13, "Time"), eivindhallan, 1);

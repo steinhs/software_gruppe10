@@ -37,7 +37,7 @@ class ParkeringsplassTest {
 
     @Test
     void sok_etter_by_som_ikke_er_registrert() {
-        Parkeringsplass.sokEtterBy("Bergen");
+        Parkeringsplass.sokEtterBy("Moskva");
     }
 
     @Test

@@ -10,7 +10,9 @@ public class Bruker{
     public Dato fodselsdato;
     public String epost;
     public int telefonnummer;
-    public static ArrayList<Bruker> alleBrukere = new ArrayList<Bruker>(); //Liste for alle opprettede parkeringsplasser
+    public Parkeringsplass leidParkering;
+    public ArrayList<Parkeringsplass> eidParkeringsPlasser = new ArrayList<>();
+    public static ArrayList<Bruker> alleBrukere = new ArrayList<>(); //Liste for alle opprettede parkeringsplasser
     public boolean epostBekreftelseStatus;
 
     //Konstruktører
@@ -20,6 +22,15 @@ public class Bruker{
         this.fodselsdato = fodselsdato;
         this.epost = epost;
         this.telefonnummer = telefonnummer;
+        this.epostBekreftelseStatus = false;
+        sendEpostBekreftelse(epost);
+        alleBrukere.add(this); //Legger bruker til liste
+    }
+
+    public Bruker(String fornavn, String etternavn, String epost) {
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
+        this.epost = epost;
         this.epostBekreftelseStatus = false;
         sendEpostBekreftelse(epost);
         alleBrukere.add(this); //Legger bruker til liste
@@ -81,13 +92,13 @@ public class Bruker{
     }
 
     public static int mottaEpostBekreftelse(String bekreftelseAvEpost){
-        for (int i = 0; i < alleBrukere.size(); i++) {
-            if (alleBrukere.get(i).getEpost().equals(bekreftelseAvEpost)){
-                if (alleBrukere.get(i).isEpostBekreftelseStatus() == false) {
-                    alleBrukere.get(i).setEpostBekreftelseStatus(true);
+        for (Bruker bruker : alleBrukere) {
+            if (bruker.getEpost().equals(bekreftelseAvEpost)) {
+                if (!bruker.isEpostBekreftelseStatus()) {
+                    bruker.setEpostBekreftelseStatus(true);
                     System.out.println("Epost bekreftet");
                     return 1;
-                } else if (alleBrukere.get(i).isEpostBekreftelseStatus() == true){
+                } else if (bruker.isEpostBekreftelseStatus()) {
                     System.out.println("Epost allerede bekreftet");
                     return 2;
                 }
@@ -96,7 +107,6 @@ public class Bruker{
         System.out.println("Ingen bruker med registrert epost");
         return 0;
     }
-
 
     @Override
     public String toString() {

@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BrukerTest {
 
-
     @Test
     void motta_epost_bekreftelse() {
         Bruker steinhanssen = new Bruker("Stein", "Hanssen", new Dato(16,1,1996), "steinhs@mail.com", 47359819);
@@ -89,5 +88,10 @@ class BrukerTest {
         Bruker steinhanssen = new Bruker("Stein", "Hanssen", new Dato(16,1,1996), "steinhs@mail.com", 47359819);
         String expected = "Bruker{fornavn='Stein', etternavn='Hanssen', fodselsdato=Date{16-1-1996}, epost='steinhs@mail.com', telefonnummer=47359819, epostBekreftelseStatus=false}";
         Assert.assertEquals(expected, steinhanssen.toString());
+    }
+
+    @Test
+    void opprette_bruker(){
+        Bruker annenbruker = new Bruker("Test", "Navn", "mailen@test.no");
     }
 }

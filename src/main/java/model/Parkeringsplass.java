@@ -70,6 +70,7 @@ public class Parkeringsplass {
         this.adresse = adresse;
         this.pris = pris;
         this.utleier = utleier;
+        this.utleier.eidParkeringsPlasser.add(this);
         this.antallParkeringer = antallParkeringer;
         alleParkeringsplasser.add(this); //Legger parkeringsplass til liste ved opprettelse
     }
